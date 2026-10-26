@@ -12,7 +12,6 @@ const Dashboard = () => {
 
   const formattedDate = currentDate.format("DD MMMM YYYY");
 
-  
   const user = auth.getUser();
   const userId = user?.data?._id;
 
@@ -28,8 +27,6 @@ const Dashboard = () => {
     navigate("/Login");
   };
 
-  
-
   if (loading) return <p>loading</p>;
 
   if (error) {
@@ -41,15 +38,27 @@ const Dashboard = () => {
 
   return (
     <>
-      <header className="dashboard-header">
-        <h2>Dashboard overview</h2>
+      <header className="">
+        <div className="flex items-center gap-3">
+          <img 
+          src="/judgement-favicon.png"
+          alt="judgement icon"
+          className="w-8 h-8"
+          />
+        
+          <h2>Criminal Case Management</h2>
+          <h3>Dashboard / overview</h3>
+        </div>
+        <br></br>
         <h1>
           Welcome back, {firstName} {lastName} {formattedDate}
         </h1>
-        <button className="m-auto" onClick={handleLogout}>logout</button>
+        <button className="m-auto" onClick={handleLogout}>
+          logout
+        </button>
       </header>
 
-      <nav className="flex flex-col bg-primary">
+      <nav className="flex justify-start w-full">
         <ul className="">
           <li>
             <Link to="Profile">Profile</Link>
@@ -62,13 +71,10 @@ const Dashboard = () => {
           </li>
         </ul>
       </nav>
-      
-      
 
       <main>
         <div>
           <h3>My current cases</h3>
-
         </div>
       </main>
     </>
