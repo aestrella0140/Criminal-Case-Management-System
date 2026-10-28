@@ -4,6 +4,7 @@ import auth from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
+import judgementIcon from "../assets/judgement-favicon.png";
 
 import { GET_USER_BY_ID, GET_CASE_BY_ID } from "../utils/queries";
 
@@ -40,41 +41,42 @@ const Dashboard = () => {
     <>
       <header className="">
         <div className="flex items-center gap-3">
-          <img 
-          src="/judgement-favicon.png"
-          alt="judgement icon"
-          className="w-8 h-8"
-          />
-        
-          <h2>Criminal Case Management</h2>
-          <h3>Dashboard / overview</h3>
+          <img src={judgementIcon}></img>
+          <div>
+            <h2 className="font-bold">Criminal Case Management</h2>
+            <h3>Dashboard / overview</h3>
+          </div>
         </div>
         <br></br>
         <h1>
           Welcome back, {firstName} {lastName} {formattedDate}
         </h1>
-        <button className="m-auto" onClick={handleLogout}>
+        <button className="flex flex-auto" onClick={handleLogout}>
           logout
         </button>
       </header>
 
-      <nav className="flex justify-start w-full">
-        <ul className="">
-          <li>
-            <Link to="Profile">Profile</Link>
-          </li>
-          <li>
-            <Link to="HomePage">HomePage</Link>
-          </li>
-          <li>
-            <Link to="RelationalAnalytics">Analytics</Link>
-          </li>
-        </ul>
-      </nav>
-
       <main>
-        <div>
-          <h3>My current cases</h3>
+        <div className="grid grid-cols-2 gap-6">
+          <div className="p-6">
+            <h3>Total cases</h3>
+            <sub className="font-thin">Assigned to you</sub>
+          </div>
+
+            <div className="p-6">
+              <h3>Active</h3>
+              <sub className="font-thin">Currently active</sub>
+            </div>
+
+          <div className="p-6">
+            <h3 >Pending</h3>
+            <sub className="font-thin">Awaiting action</sub>
+          </div>
+
+            <div className="p-6">
+            <h3>Closed</h3>
+            <sub className="font-thin">Completed cases</sub>
+            </div>
         </div>
       </main>
     </>
